@@ -43,7 +43,7 @@ app.post('/add-user', (req, res) => {
   };
   user.push(newUser);
 
-  // Guardar el nuevo usuario en el archivo JSON
+
   fs.writeFile(path.join(__dirname, 'user.json'), JSON.stringify(user, null, 2), (err) => {
       if (err) {
           console.log('Error al guardar el usuario', err);

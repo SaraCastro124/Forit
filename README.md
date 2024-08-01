@@ -13,7 +13,7 @@ Crear una pagina web que cumpla con los requisitos solicitados
 Clonar el repositorio github
 
 **Pre-requisitos**
-Tener descargadas las tecnologias de nodeJS y express
+Tener descargadas las tecnologias de ejs, express, pug
 
 ## Construido con 
 
