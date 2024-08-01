@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myHeader {
+            background-color: rgb(190, 135, 187);
+            color: black;
+            padding: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="myHeader">Desafio Forit</h1>
+
+    <div class="Fondo">
+    <input type="text" id="search" placeholder="Buscar usuario" oninput="filterUser()"> 
+    </div>
+_____________________________________________________________________
+
+        <div class="user-container" id="userContainer" >
+            <% user.forEach(user => { %>
+                <div class="user-card" data-name="<%= user.name %>" data-email="<%= user.email %>" data-city="<%= user.address.city %>"data-email="<%= user.email %>" data-city="<%= user.address.city %>" >
+                    <h3><%= user.name %> <p><strong>Email:</strong> <%= user.email %></p>
+                    <p><strong>Ciudad:</strong> <%= user.address.city %></p>
+                    <p><strong>Teléfono:</strong> <%= user.phone %></p>
+                    <p><strong>Empresa:</strong> <%= user.company.name %></p></h3>
+                   
+                </div>
+            <% }) %>
+        </div>
+______________________________________________________________________
+        <h2>Agregar Usuario</h2>
+        <form action="/add-user" method="POST">
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="city" placeholder="Ciudad" required>
+            <input type="text" name="phone" placeholder="Teléfono" required>
+            <input type="text" name="company" placeholder="Empresa" required>
+            <button type="submit">Agregar</button>
+        </form>
+    
+        <script>
+            function filterUser() {
+                const searchInput = document.getElementById('search').value.toLowerCase();
+                console.log("Buscando: ", searchInput); 
+                document.querySelectorAll('.user-card').forEach(card => {
+                    const name = card.getAttribute('data-name').toLowerCase();
+                    const email = card.getAttribute('data-email').toLowerCase();
+                    const city = card.getAttribute('data-city').toLowerCase();
+                    card.style.display = name.includes(searchInput) || email.includes(searchInput) || city.includes(searchInput) ? '' : 'none';
+                });
+            }
+        </script>
+    
+    </body>
+    </html>
